@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор</title>
+</head>
+<body>
+<script>
+// Запрашиваем у пользователя любое число и сохраняем его в переменную
+let userNumber = parseFloat(prompt("Введите любое число:"));
+// Создаем калькулятор
+var Calc_1 = prompt("первое число для калькулятора");
+var Calc_2 = prompt("второе число для калькулятора");
+var Arif = prompt("введите арифметическое действие");
+var res = eval(Calc_1 + Arif + Calc_2);
+alert(res);
+//  Запрашиваем у пользователя задумать число
+let guessNumber = parseFloat(prompt("Задумайте число, затем умножьте его на 2 и прибавьте 7. Введите результат:"));
+let originalNumber = (guessNumber - 7) / 2;
+alert("Вы задумали число: " + originalNumber);
+// Запрашиваем имя и год рождения
+let userName = prompt("Введите ваше имя:");
+let birthYear = parseInt(prompt("Введите ваш год рождения:"));
+let currentYear = new Date().getFullYear();
+let age = currentYear - birthYear;
+// Выводим возраст пользователя
+document.write(userName + ": " + age);
+</script>
+</body>
+</html>
