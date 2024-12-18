@@ -1,0 +1,82 @@
+.header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 2px 0px 15px black;
+    width: 102%;
+    max-height: 100px;
+    height: 150%;
+    padding: 0px 300px;
+  }
+  .header__intro h1 {
+      color: white; /* Цвет текста */
+      font-size: 5rem; /* Размер текста */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Тень для текста, чтобы он лучше читался на фоне */
+      font-family: 'Cormorant Infant', serif;
+      font-weight: 400;
+    }
+.header__intro {
+    background-image: url('https://avatars.mds.yandex.net/get-altay/1666174/2a0000016d9bf88aa979500909f0561e6dfe/orig');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 50vh;
+    width: 100%;
+  }
+  body {
+    background: LightSalmon;
+  }
+  .title__paragraph {
+    text-align: center;
+    font-size: 27px;
+    margin: 5px;
+    color: #fff;
+}
+.card {
+    margin: 20px auto; 
+    background-color: white; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    overflow: hidden; 
+  }
+  .card-content {
+    display: flex;
+    align-items: flex-start;
+  }
+  .h2 {
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1;
+    margin: 20px;
+  }
+  .title1 {
+    text-align: left;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .card-image {
+    width: 40%; 
+    border-radius: 20px;
+  }
+  .card-text {
+    flex: 1; 
+    padding: 20px;
+  }
+  .card-dates {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .card-dates ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  .card-dates li {
+    margin-bottom: 5px;
+  }

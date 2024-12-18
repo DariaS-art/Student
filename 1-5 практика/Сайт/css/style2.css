@@ -1,0 +1,65 @@
+.header__intro h1 {
+    color: black; /* Цвет текста */
+    font-size: 5rem; /* Размер текста */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Тень для текста, чтобы он лучше читался на фоне */
+    font-family: 'Cormorant Infant', serif;
+    text-align: center;
+  }
+.card {
+    margin: 20px auto; 
+    background-color: white; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    overflow: hidden; 
+  }
+  .card-content {
+    display: flex;
+    align-items: flex-start;
+  }
+  .h2 {
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1;
+    margin: 20px;
+  }
+  .title1 {
+    text-align: left;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .card-image {
+    width: 40%; 
+    border-radius: 20px;
+  }
+  .card-text {
+    flex: 1; 
+    padding: 20px;
+  }
+  .card-dates {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .card-dates ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  .card-dates li {
+    margin-bottom: 5px;
+  }
+  summary {
+    cursor: pointer; /* Изменяем курсор при наведении */
+    outline: none; /* Убираем обводку */
+    font-weight: bold; /* Делаем текст жирным */
+}
+
+/* Стили для раскрытого текста */
+.details-content {
+    margin-top: 10px; /* Отступ сверху для контента */
+}
+
+details[open] summary {
+    color: #007BFF; /* Цвет текста при открытом состоянии */
+}
+
+ 
