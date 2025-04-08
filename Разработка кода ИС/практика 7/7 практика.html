@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var otgadka = 0;
+//Первая загадка
+alert("загадка 1: Сколько цветов в радуге?");
+var otvet = 7; // Правильный ответ
+var otvet1 = prompt("Ответ на загадку 1");
+// Проверка ответа на первую загадку
+if (otvet == otvet1) { 
+    alert("верно"); // Если ответ верный
+    var otgadka =otgadka + 1; // Увеличиваем счетчик отгаданных загадок
+} else {
+    alert("неверно"); // Если ответ неверный
+};
+//Вторая загадка
+alert("Сколько см в одном метре");
+var otvet1 = prompt("ответ на загадку 2");
+var otvet = 100; // Правильный ответ
+// Проверка ответа на вторую загадку
+if (otvet == otvet1) {
+    alert("верно"); // Если ответ верный
+    var otgadka = otgadka + 1; // Увеличиваем счетчик отгаданных загадок
+} else {
+    alert("неверно"); // Если ответ неверный
+};
+// Показываем количество отгаданных загадок
+alert("количество отгаданных загадок = " + otgadka);
+// Цикл от 1 до 10
+for (i = 1; i < 11; i++) {
+    alert(i); // Выводим числа от 1 до 10
+}
+// Объявление переменной для цикла while
+var z = 0;
+
+while (o != 1) {
+    var o = prompt("еще по одной");
+};
+// Запрос фамилии у пользователя
+let surname = prompt("Введите вашу фамилию:");
+let reversedSurname = surname.split('').reverse().join('');
+// Проверка, является ли фамилия палиндромом
+if (surname.toLowerCase() === reversedSurname.toLowerCase()) {
+    alert("Ваша фамилия - палиндром!"); // Если палиндром
+} else {
+    alert("Ваша фамилия - не палиндром."); // Если не палиндром
+} 
+// Запрос номера по журналу
+var MoyNomer = prompt("введите свой номер по журналу");
+// Вычисление факториала
+var factorial = 1;
+for (let i = MoyNomer; i > 0; i--) { 
+    factorial = factorial * i; // Умножаем текущий факториал на число
+};
+// Показываем результат вычисления факториала
+alert("Факториал моего номера в списке:" + factorial); 
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+    <html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Фильтр E-mail</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+            }
+            input {
+                padding: 10px;
+                width: 100%;
+                box-sizing: border-box;
+                margin-bottom: 20px;
+            }
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+            li {
+                padding: 8px;
+                border: 1px solid #ccc;
+                margin-bottom: 5px;
+            }
+        </style>
+    </head>
+    <body>
+    
+    <h1>Фильтр E-mail</h1>
+    <input type="text" id="emailFilter" placeholder="Введите часть e-mail для фильтрации..." onkeyup="filterEmails()">
+    
+    <ul id="emailList">
+        <!-- Список e-mail будет добавлен здесь -->
+    </ul>
+    
+    <script>
+        // Массив e-mail
+        const emails = [
+            "example@gmail.com",
+            "test@yahoo.com",
+            "user@hotmail.com",
+            "admin@domain.com",
+            "contact@website.org",
+            "info@service.net",
+            "support@company.com",
+            "sales@business.com"
+        ];
+    
+        // Функция для отображения всех e-mail
+        function displayEmails(emailArray) {
+            const emailList = document.getElementById('emailList');
+            emailList.innerHTML = ''; // Очистить список перед добавлением
+            emailArray.forEach(email => {
+                const li = document.createElement('li');
+                li.textContent = email;
+                emailList.appendChild(li);
+            });
+        }
+    
+        // Функция для фильтрации e-mail
+        function filterEmails() {
+            const filterValue = document.getElementById('emailFilter').value.toLowerCase();
+            const filteredEmails = emails.filter(email => email.toLowerCase().includes(filterValue));
+            displayEmails(filteredEmails);
+        }
+  
+        displayEmails(emails);
+    </script>
+    
+    </body>
+    </html>
