@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Calculator</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        .calculator {
+        width: 500px; 
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f5f5f5;
+    }
+    .display {
+        padding: 10px;
+        margin-bottom: 10px;
+        font-size: 24px;
+        text-align: right;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+    }
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 5px;
+    }
+    button {
+        padding: 10px; 
+        font-size: 18px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        cursor: pointer;
+        background-color: white;
+        width: 100%; 
+    }
+    button:hover {
+        background-color: white;
+    }
+    button.operator {
+        background-color: #f0ad4e; /* Цвет для операторов */
+        color: white; /* Цвет текста */
+    }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">       
+        class Calculator extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    displayValue: '0'
+                };
+            }
+
+            handleNumberClick = (value) => {
+                this.setState(prevState => ({
+                    displayValue: prevState.displayValue === '0' ? value : prevState.displayValue + value
+                }));
+            }
+
+            handleOperatorClick = (operator) => {
+        if (operator === '√') {
+            this.handleSquareRoot();
+        } else if (operator === '%') {
+            this.handlePercentage();
+        } else if (operator === 'π') {
+            this.setState(prevState => ({
+                displayValue: prevState.displayValue === '0' ? Math.PI.toString() : prevState.displayValue + Math.PI.toString()
+            }));
+        } else if (operator === 'ln') {
+            this.handleLogarithm();
+        } else if (operator === '(' || operator === ')') {
+            this.setState(prevState => ({
+                displayValue: prevState.displayValue + operator
+            }));
+        } else {
+            this.setState(prevState => ({
+                displayValue: prevState.displayValue + operator
+            }));
+        }
+    }
+
+handleNegate = () => {
+                this.setState(prevState => ({
+                    displayValue: (parseFloat(prevState.displayValue) * -1).toString()
+                }));
+            }
+
+            handleReciprocal = () => {
+                try {
+                    const result = 1 / parseFloat(this.state.displayValue);
+                    this.setState({
+                        displayValue: result.toString()
+                    });
+                } catch (error) {
+                    this.setState({
+                        displayValue: 'Error'
+                    });
+                }
+            }
+
+            handleLogarithm = () => {
+                try {
+                    const result = Math.log10(parseFloat(this.state.displayValue));
+                    this.setState({
+                        displayValue: result.toString()
+                    });
+                } catch (error) {
+                    this.setState({
+                        displayValue: 'Error'
+                    });
+                }
+            }
+
+            handleEuler = () => {
+                this.setState(prevState => ({
+                    displayValue: prevState.displayValue === '0' ? Math.E.toString() : prevState.displayValue + Math.E.toString()
+                }));
+            }
+
+handleEqualsClick = () => {
+    try {
+        this.setState({
+            displayValue: eval(this.state.displayValue).toString()
+        });
+    } catch (error) {
+        this.setState({
+            displayValue: 'Error'
+        });
+    }
+}
+
+handleLogarithm = () => {
+    try {
+        const result = Math.log(parseFloat(this.state.displayValue));
+        this.setState({
+            displayValue: result.toString()
+        });
+    } catch (error) {
+        this.setState({
+            displayValue: 'Error'
+        });
+    }
+}
+
+handleExponentiation = (exponent) => {
+    try {
+        const result = Math.pow(parseFloat(this.state.displayValue), exponent);
+        this.setState({
+            displayValue: result.toString()
+        });
+    } catch (error) {
+        this.setState({
+            displayValue: 'Error'
+        });
+    }
+}
+
+handleSquareRoot = () => {
+    try {
+        const result = Math.sqrt(parseFloat(this.state.displayValue));
+        this.setState({
+            displayValue: result.toString()
+        });
+    } catch (error) {
+        this.setState({
+            displayValue: 'Error'
+        });
+    }
+}
+
+handlePercentage = () => {
+    try {
+        const result = parseFloat(this.state.displayValue) / 100;
+        this.setState({
+            displayValue: result.toString()
+        });
+    } catch (error) {
+        this.setState({
+            displayValue: 'Error'
+        });
+    }
+}
+            handleClearClick = () => {
+                this.setState({
+                    displayValue: '0'
+                });
+            }
+
+            handleEqualsClick = () => {
+                try {
+ 
+                    this.setState({
+                        displayValue: eval(this.state.displayValue).toString()
+                    });
+                } catch (error) {
+                    this.setState({
+                        displayValue: 'Error'
+                    });
+                }
+            }
+
+            handleTrigFunction = (func) => {
+                const trigFunctions = {
+                    'sin': (x) => Math.sin(parseFloat(x)),
+                    'cos': (x) => Math.cos(parseFloat(x)),
+                    'tan': (x) => Math.tan(parseFloat(x)),
+                    'asin': (x) => Math.asin(parseFloat(x)),
+                    'acos': (x) => Math.acos(parseFloat(x)),
+                    'atan': (x) => Math.atan(parseFloat(x))
+                };
+
+                try {
+                
+                    const result = trigFunctions[func](this.state.displayValue);
+                    this.setState({
+                        displayValue: result.toString()
+                    });
+                } catch (error) {
+                    this.setState({
+                        displayValue: 'Error'
+                    });
+                }
+            }
+
+            render() {
+                return (
+                    <div className="calculator">
+                        <div className="display">{this.state.displayValue}</div>
+                        <div className="buttons">
+                            <button onClick={() => this.handleExponentiation(2)}>x²</button>
+                            <button onClick={() => this.handleExponentiation(3)}>x³</button>
+                            <button onClick={this.handleNegate}>+/-</button>
+                            <button onClick={() => this.handleOperatorClick('(')}>(</button>
+                            <button onClick={() => this.handleOperatorClick(')')}>)</button>
+                            <button onClick={() => this.handleOperatorClick('%')}>%</button>
+                            <button className="operator" onClick={() => this.handleOperatorClick('/')}>/</button>
+                            <button onClick={() => this.handleTrigFunction('asin')}>asin</button>
+                            <button onClick={() => this.handleTrigFunction('sin')}>sin</button>
+                            <button onClick={this.handleReciprocal}>1/x</button>
+                            <button onClick={() => this.handleNumberClick('7')}>7</button>
+                            <button onClick={() => this.handleNumberClick('8')}>8</button>
+                            <button onClick={() => this.handleNumberClick('9')}>9</button>
+                            <button className="operator" onClick={() => this.handleOperatorClick('*')}>*</button>
+                            <button onClick={() => this.handleTrigFunction('acos')}>acos</button>
+                            <button onClick={() => this.handleTrigFunction('cos')}>cos</button>
+                            <button onClick={() => this.handleOperatorClick('√')}>√</button>
+                            <button onClick={() => this.handleNumberClick('4')}>4</button>
+                            <button onClick={() => this.handleNumberClick('5')}>5</button>
+                            <button onClick={() => this.handleNumberClick('6')}>6</button>
+                            <button className="operator" onClick={() => this.handleOperatorClick('-')}>-</button>
+                            <button onClick={() => this.handleTrigFunction('atan')}>atan</button>
+                            <button onClick={() => this.handleTrigFunction('tan')}>tan</button>
+                            <button onClick={() => this.handleOperatorClick('ln')}>ln</button>
+                            <button onClick={() => this.handleNumberClick('1')}>1</button>
+                            <button onClick={() => this.handleNumberClick('2')}>2</button>
+                            <button onClick={() => this.handleNumberClick('3')}>3</button>
+                            <button className="operator" onClick={() => this.handleOperatorClick('+')}>+</button>
+                            <button onClick={this.handleLogarithm}>lg</button>
+                            <button onClick={() => this.handleOperatorClick('π')}>π</button>
+                            <button onClick={this.handleEuler}>e</button>
+                            <button onClick={() => this.handleNumberClick('0')}>0</button>
+                            <button onClick={() => this.handleNumberClick('.')}>.</button>
+                            <button onClick={this.handleClearClick}>C</button>
+                            <button className="operator" onClick={this.handleEqualsClick}>=</button>
+                        </div>
+                    </div>
+                );
+            }
+        }
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<Calculator />);
+    </script>
+</body>
+</html>
