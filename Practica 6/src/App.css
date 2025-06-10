@@ -1,0 +1,31 @@
+body {
+  background-color: #f3f0ff; /* Светлый фон */
+}
+
+h1, h2, h3 {
+  color: #93cdff; /* Фиолетовый цвет заголовков */
+}
+
+footer {
+  background-color: #6f42c1; /* Фиолетовый цвет подвала */
+  color: white;
+  padding: 10px 0;
+}
+
+.card {
+  transition: transform 0.2s; /* Плавный переход */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Увеличение карточки при наведении */
+}
+
+.btn {
+  background-color:   #93cdff; /* Фиолетовый цвет заголовков */
+; /* Розовый цвет кнопок */
+  border: none; /* Убираем границу */
+}
+
+.btn:hover {
+  background-color: #ff69b4; /* Более яркий розовый при наведении */
+}

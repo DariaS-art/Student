@@ -1,0 +1,56 @@
+.timer {
+  font-size: 20px;
+  margin: 20px 0;
+}
+.slider {
+  margin: 20px 0;
+}
+
+.slide {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.slider img {
+  width: 100%;
+  height: auto;
+  max-height: 400px; /* Установите максимальную высоту */
+}
+
+button {
+  margin: 5px;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+.article {
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+.article img {
+  width: 100%;
+  height: auto;
+  max-height: 500px; /* Установите максимальную высоту */
+  margin-bottom: 10px;
+}
+h2 {
+  margin: 0 0 10px;
+}
+
+p {
+  margin: 0;
+}
+.news-app {
+  width: 80%;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
