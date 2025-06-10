@@ -1,0 +1,124 @@
+{% extends "shop/base.html" %}
+
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}Nikifilini - Каталог{% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Категории</h5>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="{% url 'shop:book_list' %}" 
+                       class="list-group-item list-group-item-action {% if not category %}active{% endif %}">
+                        <i class="fas fa-th-large me-2"></i>Все товары
+                    </a>
+                    {% for c in categories %}
+                        <a href="{{ c.get_absolute_url }}" 
+                           class="list-group-item list-group-item-action {% if category.slug == c.slug %}active{% endif %}">
+                            <i class="fas fa-tshirt me-2"></i>{{ c.name }}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Фильтры</h5>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Цена</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" placeholder="От" name="price_min">
+                                <input type="number" class="form-control" placeholder="До" name="price_max">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Размер</label>
+                            <div class="d-flex flex-wrap gap-2">
+                                <input type="checkbox" class="btn-check" id="size-s" name="size" value="S" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="size-s">S</label>
+                                <input type="checkbox" class="btn-check" id="size-m" name="size" value="M" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="size-m">M</label>
+                                <input type="checkbox" class="btn-check" id="size-l" name="size" value="L" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="size-l">L</label>
+                                <input type="checkbox" class="btn-check" id="size-xl" name="size" value="XL" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="size-xl">XL</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Применить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-9">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="h2">{% if category %}{{ category.name }}{% else %}Каталог Nikifilini{% endif %}</h1>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-primary active">
+                        <i class="fas fa-th-large"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-primary">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for book in books %}
+                    <div class="col">
+                        <div class="card h-100">
+                            {% if book.image %}
+                                <div class="position-relative">
+                                    <img src="{{ book.image.url }}" class="card-img-top" alt="{{ book.title }}" style="height: 300px; object-fit: cover;">
+                                    <div class="position-absolute top-0 end-0 p-2">
+                                        <button class="btn btn-light btn-sm rounded-circle">
+                                            <i class="far fa-heart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="position-relative bg-light" style="height: 300px;">
+                                    <div class="d-flex align-items-center justify-content-center h-100">
+                                        <i class="fas fa-tshirt fa-3x text-muted"></i>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ book.title }}</h5>
+                                <p class="card-text text-muted">{{ book.author }}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="h5 mb-0">{{ book.price }} ₽</span>
+                                    <div class="btn-group">
+                                        <a href="{{ book.get_absolute_url }}" class="btn btn-outline-primary">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <form action="{% url 'shop:cart_add' book.id %}" method="post" class="d-inline">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="quantity" value="1">
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fas fa-shopping-cart"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="col-12">
+                        <div class="alert alert-info">
+                            В данной категории пока нет товаров
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %} 

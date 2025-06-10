@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Таблица разработчиков{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>Таблица разработчиков</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Возраст</th>
+                <th>Специализация</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dev in developers %}
+            <tr>
+                <td>{{ dev.name }}</td>
+                <td>{{ dev.age }}</td>
+                <td>{{ dev.specialization }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %} 

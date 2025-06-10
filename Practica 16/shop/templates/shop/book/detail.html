@@ -1,0 +1,134 @@
+{% extends "shop/base.html" %}
+
+{% block title %}
+    {{ book.title }}
+{% endblock %}
+
+{% block content %}
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'shop:book_list' %}">Каталог</a></li>
+            {% if book.category %}
+                <li class="breadcrumb-item"><a href="{{ book.category.get_absolute_url }}">{{ book.category.name }}</a></li>
+            {% endif %}
+            <li class="breadcrumb-item active" aria-current="page">{{ book.title }}</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card border-0">
+                {% if book.image %}
+                    <img src="{{ book.image.url }}" class="img-fluid rounded" alt="{{ book.title }}" style="max-height: 500px; object-fit: contain;">
+                {% else %}
+                    <div class="bg-light rounded" style="height: 500px;">
+                        <div class="d-flex align-items-center justify-content-center h-100">
+                            <i class="fas fa-tshirt fa-5x text-muted"></i>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h1 class="h2 mb-3">{{ book.title }}</h1>
+            <p class="text-muted mb-3">{{ book.author }}</p>
+            
+            <div class="mb-4">
+                <h3 class="h4 text-primary mb-3">{{ book.price }} ₽</h3>
+                <div class="d-flex gap-2 mb-3">
+                    <input type="radio" class="btn-check" name="size" id="size-s" value="S" checked>
+                    <label class="btn btn-outline-primary" for="size-s">S</label>
+                    <input type="radio" class="btn-check" name="size" id="size-m" value="M">
+                    <label class="btn btn-outline-primary" for="size-m">M</label>
+                    <input type="radio" class="btn-check" name="size" id="size-l" value="L">
+                    <label class="btn btn-outline-primary" for="size-l">L</label>
+                    <input type="radio" class="btn-check" name="size" id="size-xl" value="XL">
+                    <label class="btn btn-outline-primary" for="size-xl">XL</label>
+                </div>
+            </div>
+
+            <form action="{% url 'shop:cart_add' book.id %}" method="post" class="mb-4">
+                {% csrf_token %}
+                <input type="hidden" name="size" id="size-input" value="S">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="quantity" class="form-label">Количество:</label>
+                    </div>
+                    <div class="col-auto">
+                        <div class="input-group" style="width: 130px;">
+                            <button type="button" class="btn btn-outline-secondary" onclick="decrementQuantity()">-</button>
+                            <input type="number" name="quantity" id="quantity" class="form-control text-center" value="1" min="1" max="{{ book.stock }}">
+                            <button type="button" class="btn btn-outline-secondary" onclick="incrementQuantity()">+</button>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-shopping-cart me-2"></i>Добавить в корзину
+                        </button>
+                    </div>
+                </div>
+                {% if book.stock <= 0 %}
+                    <div class="alert alert-warning mt-2">
+                        Товар временно отсутствует
+                    </div>
+                {% endif %}
+            </form>
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Описание</h5>
+                    <p class="card-text">{{ book.description }}</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Характеристики</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-tag me-2 text-muted"></i>
+                            <strong>Категория:</strong> {{ book.category.name }}
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-tshirt me-2 text-muted"></i>
+                            <strong>Материал:</strong> Хлопок 100%
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-ruler me-2 text-muted"></i>
+                            <strong>Размеры:</strong> S, M, L, XL
+                        </li>
+                        <li>
+                            <i class="fas fa-palette me-2 text-muted"></i>
+                            <strong>Цвета:</strong> Черный, Белый, Синий
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Обновляем скрытое поле (size-input) при выборе размера
+        document.querySelectorAll('input[name="size"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                document.getElementById('size-input').value = this.value;
+            });
+        });
+
+        function incrementQuantity() {
+            var input = document.getElementById('quantity');
+            var value = parseInt(input.value);
+            if (value < parseInt(input.max)) {
+                input.value = value + 1;
+            }
+        }
+
+        function decrementQuantity() {
+            var input = document.getElementById('quantity');
+            var value = parseInt(input.value);
+            if (value > parseInt(input.min)) {
+                input.value = value - 1;
+            }
+        }
+    </script>
+{% endblock %} 
