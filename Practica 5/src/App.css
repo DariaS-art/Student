@@ -1,0 +1,88 @@
+.App {
+  text-align: center;
+}
+
+.logo {
+  height: 90px; 
+}
+
+.header {
+  background-color: #e87676;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-menu a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.header-menu a:hover {
+  text-decoration: underline;
+}
+
+.content {
+  display: flex;
+}
+
+.sidebar {
+  width: 800px;
+  background-color: #f4f4f4;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar-button {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #e87676;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.sidebar-button:hover {
+  background-color: #e87676;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  margin: 10px;
+  padding: 10px;
+  width: 250px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.dish-image {
+  width: 100%;
+  height: auto;
+}
+
+button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #e87676;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
+}
