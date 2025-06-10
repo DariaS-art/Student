@@ -1,0 +1,104 @@
+/* Стили для общего оформления */
+* {
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  font-size: 120%;
+  background-color: white;
+  background-size: 100%;
+  
+}
+
+/* Шапка */
+.header {
+  width: 30%;
+  margin: 150px auto 0px;
+  color: white;
+  background: linear-gradient(to right, #cb11ab, #6f2da8);
+  text-align: center;
+  border: 1px solid black;
+  border-bottom: none;
+  border-radius: 10px 10px 0px 0px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+}
+
+/* Оформление формы и контента */
+form, .content {
+  width: 30%;
+  margin: 0px auto;
+  padding: 20px;
+  border: 1px solid black;
+  background: white;
+  border-radius: 0px 0px 10px 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+}
+
+/* Группы ввода */
+.input-group {
+  margin: 10px 0px 10px 0px;
+}
+.input-group label {
+  display: block;
+  text-align: left;
+  margin: 3px;
+}
+.input-group input {
+  height: 30px;
+  width: 93%;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+
+/* Кнопки */
+.btn {
+  box-shadow: 0 5px 20px 0 rgb(137, 62, 190);
+  transition: 0.5s;
+  padding: 10px 20px; 
+  background:linear-gradient(to right, #cb11ab, #6f2da8); 
+  color: white; 
+}
+
+/* Сообщения об ошибках и успехе */
+.error {
+  width: 92%; 
+  margin: 0px auto; 
+  padding: 10px; 
+  border: 1px solid #a94442; 
+  color: #a94442; 
+  background: #f2dede; 
+  border-radius: 5px; 
+  text-align: left;
+}
+.success {
+  color: #3c763d; 
+  background: #dff0d8; 
+  border: 1px solid #3c763d;
+  margin-bottom: 20px;
+}
+
+/* Новый стиль для окна входа и регистрации с шапкой */
+.login-register-container {
+  width: 30%; 
+  margin: 20px auto; 
+  border: 1px solid LightBlue;
+  border-radius: 10px;
+  overflow: hidden; 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+}
+
+.login-register-header {
+  background: rgb(255, 212, 255);
+  text-align: center;
+  padding: 20px;
+  color: MidnightBlue;
+  font-size: 1.5em; 
+}
+
+.login-register-content {
+  padding: 20px;
+  background: white;
+}

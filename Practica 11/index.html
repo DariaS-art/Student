@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Элементарный счётчик на Vue</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    button {
+      font-size: 1.2rem;
+      margin: 0 10px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    button.reset {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    button.reset:hover {
+      background-color: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>{{ counter }}</h1>
+    <button @click="decrement">-1</button>
+    <button @click="increment">+1</button>
+    <button class="reset" @mouseover="reset">Reset counter</button>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          counter: 0
+        }
+      },
+      methods: {
+        increment() {
+          this.counter++;
+        },
+        decrement() {
+          this.counter--;
+        },
+        reset() {
+          this.counter = 0;
+        }
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>

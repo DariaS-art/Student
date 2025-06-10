@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Практика Vue JS</title>
+</head>
+<body>
+    <div id="main-element">
+        <p>{{ bigData[0].hobbies[2].cheese }}</p> <!-- Выводим значение cheese -->
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#main-element',
+            data: {
+                bigData: [{
+                    'name': 'Alex',
+                    'age': 56,
+                    'hobbies': [
+                        'football',
+                        'tennis',
+                        {'cheese': 'notNow'} // Значение, которое нужно вывести
+                    ]
+                }]
+            }
+        });
+    </script>
+</body>
+</html>

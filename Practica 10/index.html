@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Учёт покупок | MyWallet</title>
+    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">MyWallet</div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="main-grid">
+            <div class="add-section">
+                <div class="card">
+                    <h2><i class="fas fa-plus-circle"></i> Новая покупка</h2>
+                    <form id="purchaseForm">
+                        <div class="form-group">
+                            <input type="text" id="itemName" required>
+                            <label for="itemName">Название товара</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" id="itemPrice" required>
+                            <label for="itemPrice">Цена</label>
+                        </div>
+                        <div class="form-group">
+                            <select id="itemCategory" required>
+                                <option value="" disabled selected>Выберите категорию</option>
+                                <option value="одежда">Одежда</option>
+                                <option value="электроника">Электроника</option>
+                                <option value="продукты">Продукты</option>
+                                <option value="красота">Красота</option>
+                                <option value="дом">Дом</option>
+                                <option value="развлечения">Развлечения</option>
+                                <option value="образование">Образование</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-plus"></i> Добавить
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="stats-section">
+                <div class="card">
+                    <h2><i class="fas fa-chart-pie"></i> Статистика</h2>
+                    <div class="chart-container">
+                        <canvas id="statsChart"></canvas>
+                    </div>
+                    <div class="total-amount">
+                        <b>Всего потрачено: <span id="totalAmount">0</span> ₽</b>
+                    </div>
+                    <div id="categoryStats" class="category-stats"></div>
+                </div>
+            </div>
+            <div class="purchases-section">
+                <div class="card">
+                    <h2><i class="fas fa-list"></i> Мои покупки</h2>
+                    <div id="purchasesList" class="purchases-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script2.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Практика Vue JS</title>
+</head>
+<body>
+    <div id="main-element">
+        <p>{{ textPlusSign(text) }}</p> <!-- Вызываем метод textPlusSign с параметром text -->
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#main-element',
+            data: {
+                text: 'Simple Text' // Исходный текст
+            }, 
+            methods: {
+                textPlusSign(data) {
+                    return data + '!'; // Добавляем восклицательный знак к строке
+                }
+            }
+        });
+    </script>
+</body>
+</html>
